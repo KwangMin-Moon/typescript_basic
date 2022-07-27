@@ -17,11 +17,11 @@
   };
 
   /*
-   * String Literal Types
+   * String Literal Types 타입을 문자열로 지정
    */
   type Name = 'name';
   let ellieName: Name;
-  ellieName = 'name';
+  ellieName = 'name'; // 'name'문자열 외에 다른 문자열을 할당할 수 없다.
   type JSON = 'json';
   const json: JSON = 'json';
 
