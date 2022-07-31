@@ -26,4 +26,5 @@
   const json: JSON = 'json';
 
   type Boal = true;
+  const isCat: Boal = true; // true값만 할당할 수 있다.
 }
