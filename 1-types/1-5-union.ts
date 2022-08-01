@@ -42,6 +42,8 @@
 
   function printLoginState(state: LoginState) {
     if ('response' in state) {
+      // state.reason 또는 state.response를 해도 타입스크립트에서 모른다. 왜냐면 LoginState는 둘 중 하나가 될 수 있기 때문
+      // 그래서 코드를 작성하는 시점에는 어떤게 있는지 모른다.  이럴 경우 response라는 키가 state 오브젝트 안에 있으면 state.response에 접근이 가능
       console.log(`${state.response.body}`);
     } else {
       console.log(`${state.reason}`);
