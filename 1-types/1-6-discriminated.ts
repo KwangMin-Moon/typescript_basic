@@ -1,6 +1,6 @@
 {
   // 동일한 키와 하지만 state별로 다른 값을 가지고 있도록 만들어 구분 가능하게 해준다.
-  // 아래 예시에는 result라는 고통의 키를 가지고 값을 다르게 해줘 구분해준다.
+  // 아래 예시에는 result라는 공통의 키를 가지고 값을 다르게 해줘 구분해준다.
   // function: login -> success, fail
   type SuccessState = {
     result: 'success';

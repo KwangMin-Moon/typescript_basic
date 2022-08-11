@@ -47,7 +47,49 @@
   }
 
   const maker = CoffeeMaker.makeMachine(32); // 생성자가 아닌 static 함수로 object 생성
+
+  class User {
+    firstName: string;
+    lastName: string;
+    get fullName(): string {
+      return `${this.firstName} ${this.lastName}`;
+    }
+    constructor(firstName: string, lastName: string) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+    }
+  }
+  const user = new User('Steve', 'Jobs');
+  console.log(user.fullName);
+  user.firstName = 'Ellie';
+  console.log(user.fullName); // getter을 쓰지 않고 fullName: string하고 constructor안에 this.fullName했으면 Steve Jobs라고 출력될거다.
+  // 세터와 게터는 일반 변수(맴버 변수)처럼 사용이 가능하지만 어떠한 계산을 해야할 때 조금 더 유연하게 쓸 수가 있다.
+  // 그리고 한 번 생성자에 전달 된 이름이 변경할 수 없으면 외부에서 변경이 불가능하도록 private이라고 설정할 수 있다.
 }
 
 // 캡슐화는 클래스를 만들 때 외부에서 접근할 수 있는 것은 무엇인지 그리고 내부적으로만 가지고 있어야 하는 데이터는 무엇인지 이런 것들을 결정할 수 있다.
 // 그래서 외부에 어떤 걸 노출 할 것인지 잘 생각해서 클래스를 만드는 게 중요하다.
+
+// class User {
+//   private firstName: string;
+//   private lastName: string;
+//   get fullName(): string {
+//     return `${this.firstName} ${this.lastName}`;
+//   }
+//   constructor(firstName: string, lastName: string) {
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//   }
+// }
+
+// 위에 걸 아래와 같이 간단하게 바꿀 수 있다.
+
+// class User {
+//   get fullName(): string {
+//     return `${this.firstName} ${this.lastName}`;
+//   }
+//   constructor(private firstName: string, private lastName: string) {
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//   }
+// }
