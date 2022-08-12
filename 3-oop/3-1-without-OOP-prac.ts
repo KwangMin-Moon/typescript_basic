@@ -1,22 +1,27 @@
-type CoffeeCup = {
-  shots: number;
-  hasMilk: boolean;
-};
+// 요구사항
+// 1. [ ] 커피콩, 1shot에 들어가는 커피콩양을 정의하는 변수
+// 2. [ ] 커피콩 여유분 확인하고 있으면 커피 만들기
+// 3. [ ] shot 정보와 우유 정보를 리턴
 
-const BEANS_GRAMM_PER_SHOT: number = 7;
-let coffeeBeans: number = 0;
+{
+  type CoffeCup = {
+    shot: number;
+    milk: boolean;
+  };
+  const COFFEE_BEANS_PER_SHOT: number = 4;
+  let coffeeBean: number = 14;
 
-function coffeeMaker(shots: number): CoffeeCup {
-  if (coffeeBeans < shots * BEANS_GRAMM_PER_SHOT) {
-    throw new Error('Not enough coffee beans!');
+  function coffeeMaker(shot: number): CoffeCup {
+    if (coffeeBean > COFFEE_BEANS_PER_SHOT * shot) {
+      coffeeBean -= COFFEE_BEANS_PER_SHOT * shot;
+      return {
+        shot,
+        milk: false,
+      };
+    } else {
+      throw new Error('Not Enough coffeBeans');
+    }
   }
 
-  coffeeBeans -= shots * BEANS_GRAMM_PER_SHOT;
-  return {
-    shots,
-    hasMilk: false,
-  };
+  console.log(coffeeMaker(2));
 }
-
-coffeeBeans += 3 * BEANS_GRAMM_PER_SHOT;
-const coffee = makeCoffee(3);
